@@ -14,18 +14,31 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     }
 
     //validate password
-    if(empty($_POST["pass"])){        
+    if(empty($_POST["password"])){        
         $pass = 'Password is required';
-            }elseif(!preg_match("/^[a-zA-Z0-9]*$/",$_POST["pass"])){                
+            }elseif(!preg_match("/^[a-zA-Z0-9]*$/",$_POST["password"])){                
         $pass = 'Password must be in alphanumeric.';
-    }elseif(strlen($_POST["pass"])< 6){
+    }elseif(strlen($_POST["password"])< 6){
         $pass = 'Password must be at least six characters.';
     }
     else {
-        $passw = password_hash(test_values($_POST["pass"]),PASSWORD_DEFAULT); 
+        $passw = test_values($_POST["password"]);  
+    }
+    $passw2 = test_values($_POST["pass"]);
+    
+    // validating passwords
+
+  if($passw !== $passw2) {
+    $err="<b>Invalid operation... Wrong password confirmation supplied!</b>";
+    
+    }else{
+        $passw = password_hash(test_values($_POST["password"]),PASSWORD_DEFAULT);
     }
 
-    
+
+
+
+  if(empty($ema) && empty($pass) && empty($err)){  
     $result = mysqli_query($conn, "SELECT * FROM admin where email='$email'");
 
     if (mysqli_num_rows($result) == 0) {
@@ -33,11 +46,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
         //create account
         mysqli_query($conn, "insert into admin set email='$email', password='$passw'") or die(mysql_error($conn));
         
-        //send verification email
-        //@mail($email,"MySite - Account Verification", "Hello {$fullname},\nPlease click the link below (or copy and paste on your browser) to verify your ccitraders.com account.\nhttp://www.mysite.com/verify?email={$email}","From: noreply@mysite.com");
         
           $_SESSION["msg"]="<font color=green><b>Your registration was successful!</b></font>";
-        header("location: login");
+        // header("location: index.");
         }
         
         else {
@@ -46,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
         }
    
         
-      
+    }
     
 
 } 
@@ -55,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
 
 
-// echo $err;
 
 
 
