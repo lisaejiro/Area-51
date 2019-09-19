@@ -1,14 +1,14 @@
-<!-- 
+
 <?php
 // Init + Start session
-session_start();
-$_SESSION['user']="";
+
+$err=$pass=$ema="";
 // Redirect users to the main page if already signed in
-if (is_array($_SESSION['user'])) {
-  header("Location: success.php");
-  die();
-}
-?> -->
+if(isset($_POST['login'])){
+    require("login_user.php");
+    }
+
+?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -54,17 +54,23 @@ if (is_array($_SESSION['user'])) {
 			<?php	echo $_SESSION["msg"];?> </span>
 			<?php } ?>  
 
-				<form action="index.php" method="post" id="login-form" onsubmit="return login();">
+				<form action="index.php" method="post" id="login-form">
+				<span style="color:red; font-size:20px"><?php echo $err; ?></span>
+
 					<div class="icon1">
 						<span class="fa fa-user"></span>
-						<input type="email" name="email" id="login-email" placeholder="Email Address" required=""/>
+						<input type="email" name="email" id="login-email" placeholder="Email Address" />
 					</div>
+					<span style="color:red; font-size:20px"><?php echo $ema; ?></span>
+
 					<div class="icon1">
 						<span class="fa fa-lock"></span>
-						<input type="password"  name="password" id="login-password" placeholder="Password" required=""/>
+						<input type="password"  name="password" id="login-password" placeholder="Password" />
 					</div>
+					<span style="color:red; font-size:20px"><?php echo $pass; ?></span>
+
 					<div class="bottom">
-						<button class="btn">Log In</button>
+						<button class="btn" name="login">Log In</button>
 					</div>
 					<div class="links">
 						<!-- <p><a href="#">Forgot Password?</a></p> -->

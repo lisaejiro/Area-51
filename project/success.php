@@ -1,18 +1,15 @@
 <?php
 // Init + Start session
 
-session_start();
+
 
 // Redirect users to the login page if not signed in
-if (!is_array($_SESSION['user'])) {
-  header("Location: index.php");
-  die();
-}
+
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login Page|HNG Intership</title>
+<title>Welcome |HNG Intership</title>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +40,7 @@ if (!is_array($_SESSION['user'])) {
 <!-- main -->
 <div class="w3layouts-main"> 
 	<div class="bg-layer">
-		<h1>Login form</h1>
+		<h1> TEAM AREA 51</h1>
 		<div class="header-main">
 			<div class="main-icon">
 				<span class="fa fa-eercast"></span>
