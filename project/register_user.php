@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
 
   if(empty($ema) && empty($pass) && empty($err)){  
-    $result = mysqli_query($conn, "SELECT * FROM admin where email='$email'");
+    $result = mysqli_query($conn, "SELECT * FROM register where email='$email'");
 
     if (mysqli_num_rows($result) == 0) {
     
