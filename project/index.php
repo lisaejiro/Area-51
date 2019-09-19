@@ -49,7 +49,10 @@ if (is_array($_SESSION['user'])) {
 				<span class="fa fa-eercast"></span>
 			</div>
 			<div class="header-left-bottom">
-			<span id="demo" style="color:red; font-size:20px;"></span>
+			<?php if(isset($_SESSION["msg"])){?>	
+			<span id="demo" style="font-size:30px;"> 
+			<?php	echo $_SESSION["msg"];?> </span>
+			<?php } ?>  
 
 				<form action="index.php" method="post" id="login-form" onsubmit="return login();">
 					<div class="icon1">
@@ -93,3 +96,4 @@ if (is_array($_SESSION['user'])) {
 
 </body>
 </html>
+<?php  unset($_SESSION['msg']);?> 

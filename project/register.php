@@ -1,3 +1,18 @@
+
+<?php
+require 'conn.php';
+//session_start();
+
+
+$ema=$pass=$err="";
+
+if(isset($_POST['register'])){
+    require("register_user.php");
+    }
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,20 +59,26 @@
 
 					<div class="icon1">
 						<span class="fa fa-user"></span>
-						<input type="email" name="email" id="login-email" placeholder="Email Address" required=""/>
+						<input type="email" name="email" id="login-email" placeholder="Email Address" />
+						
 					</div>
+					<span style="color:red; font-size:25px"><?php echo $ema; ?></span>
 					<div class="icon1">
 						<span class="fa fa-lock"></span>
-						<input type="password"  name="password" id="login-password" placeholder="Password" required=""/>
-                    </div>
+						<input type="password"  name="password" id="login-password" placeholder="Password" />
+						
+					</div>
+					<span style="color:red; font-size:25px"><?php echo $pass; ?></span>
 
                     <div class="icon1">
 						<span class="fa fa-lock"></span>
-						<input type="password"  name="pass" id="login-password" placeholder="Confirm Password" required=""/>
-                    </div>
+						<input type="password"  name="pass" id="login-password1" placeholder="Confirm Password" />
+					
+					</div>
+					<span style="color:red; font-size:25px"><?php echo $err; ?></span>
                     
 					<div class="bottom">
-						<button class="btn"> Sign Up</button>
+						<button class="btn" name="register"> Sign Up</button>
 					</div>
 					<div class="links">
 						<!-- <p><a href="#">Forgot Password?</a></p> -->
