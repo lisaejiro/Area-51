@@ -47,9 +47,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
         //create account
         mysqli_query($conn, "insert into register set email='$email', password='$password'") or die(mysql_error($conn));
         
-        
-          $_SESSION["msg"]="<font color=green><b>Your registration was successful! &#10004;</b></font>";
-        header("location: index.php");
+        $_SESSION['sms']= "<font color=green><b>Your registration was successful! </b></font>";
+        header("location:index.php");
+
         $email=$password="";
         }
         

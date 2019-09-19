@@ -1,7 +1,7 @@
 
 <?php
 // Init + Start session
-
+require("conn.php");
 $err=$pass=$ema="";
 // Redirect users to the main page if already signed in
 if(isset($_POST['login'])){
@@ -49,10 +49,16 @@ if(isset($_POST['login'])){
 				<span class="fa fa-eercast"></span>
 			</div>
 			<div class="header-left-bottom">
-			<?php if(isset($_SESSION["msg"])){?>	
-			<span id="demo" style="font-size:30px;"> 
-			<?php	echo $_SESSION["msg"];?> </span>
-			<?php } ?>  
+
+			
+
+			<span  style="font-size:30px;"> 
+			<?php if(isset($_SESSION['sms'])){
+				echo $_SESSION['sms'] ."&#10004;";
+				}?>
+			 </span>
+
+			
 
 				<form action="index.php" method="post" id="login-form">
 				<span style="color:red; font-size:20px"><?php echo $err; ?></span>
@@ -102,4 +108,4 @@ if(isset($_POST['login'])){
 
 </body>
 </html>
-<?php  unset($_SESSION['msg']);?> 
+<?php unset($_SESSION['sms'])?>

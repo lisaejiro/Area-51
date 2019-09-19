@@ -2,7 +2,7 @@
 
 $ema=$email='';
 $pass='';
-require("conn.php");
+
 
 if ($_SERVER["REQUEST_METHOD"] =="POST") {
 
@@ -42,7 +42,7 @@ if (empty($ema) && empty($pass)) {
                  if (password_verify ($passw, $row['password'])) {								
                     //  $_SESSION['login']=true;
                     header("location: success.php");
-                     
+
                  }else{
                     $err = 'Password does not match';
                  }

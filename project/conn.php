@@ -1,5 +1,5 @@
 <?php
-session_start();
+@session_start();
 // connection to database 
 define('DB_SERVER', "localhost");
 define('DB_USER', "root");
